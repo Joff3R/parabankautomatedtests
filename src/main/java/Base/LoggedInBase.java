@@ -10,4 +10,5 @@ public class LoggedInBase extends Base {
     public void logIn(){
         loginPage.userIsLoggedIn(DEFAULT_USER);
     }
+    //TEST
 }
