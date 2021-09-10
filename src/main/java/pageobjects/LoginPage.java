@@ -8,13 +8,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
 
-    private final SelenideElement loginForm = $(By.id("loginPanel"));
-    private final SelenideElement usernameInput = $(By.name("username"));
+    private final SelenideElement loginBox = $(".login-box");
+    private final SelenideElement usernameInput = $("#user-name");
     private final SelenideElement passwordInput = $(By.name("password"));
-    private final SelenideElement loginButton = $(By.xpath("//option[@value='Log In']"));
+    private final SelenideElement loginButton = $(".submit-button");
 
     public void userIsLoggedIn(User user) {
-        if (loginForm.isDisplayed()) {
+        if (loginBox.isDisplayed()) {
             usernameInput.sendKeys(user.getUsername());
             passwordInput.sendKeys(user.getPassword());
             loginButton.click();

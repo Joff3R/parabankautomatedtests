@@ -1,4 +1,4 @@
-package Base;
+package base;
 
 import lombok.extern.java.Log;
 import org.testng.ITestResult;
