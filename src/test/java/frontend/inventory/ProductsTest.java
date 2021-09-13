@@ -1,20 +1,22 @@
-package frontend.navigation;
+package frontend.inventory;
 
 import base.StandardBase;
 import org.testng.annotations.Test;
-
-import static com.codeborne.selenide.Selenide.title;
-import static org.assertj.core.api.Assertions.assertThat;
+import pageobjects.Products;
 
 @Test
 public class ProductsTest extends StandardBase {
 
+    private final Products products = new Products();
+
     public void itShouldBePossibleToAddAllProductsToCart() {
 
         //Given
-        String webpageTitle = "Swag Labs";
+        products.shoppingCartIsEmpty();
+
+        //When
+        products.addAllProductsToCart();
 
         //Then
-        assertThat(title()).isEqualTo(webpageTitle);
     }
 }
