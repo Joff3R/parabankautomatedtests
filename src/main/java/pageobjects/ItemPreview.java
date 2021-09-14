@@ -10,6 +10,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ItemPreview {
 
+    private final Inventory inventory = new Inventory();
+
     private final SelenideElement addToCart = $(".btn_primary");
     private final SelenideElement backToProducts = $("#back-to-products");
 
@@ -28,5 +30,10 @@ public class ItemPreview {
 
     public void addToCartButtonShouldNotBeVisible() {
         addToCart.shouldNotBe(visible);
+    }
+
+    public void itemPreviewPageIsOpened() {
+        inventory.openRandomItemPreview();
+        assertThat(url()).isNotEqualTo(INVENTORY);
     }
 }

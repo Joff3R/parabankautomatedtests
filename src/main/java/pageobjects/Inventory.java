@@ -12,14 +12,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.WebDriverRunner.url;
-import static helper.UrlHelper.INVENTORY;
 import static java.util.Comparator.reverseOrder;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static util.FormatUtil.extractProductAmount;
 import static util.RandomUtil.generateRandomNumber;
 
 public class Inventory {
+
+    private final ItemPreview itemPreview = new ItemPreview();
 
     private static final String ADD_TO_CART = "#add-to-cart-";
     private static final String REMOVE = "#remove-";
@@ -151,11 +151,14 @@ public class Inventory {
         int itemNumber = generateRandomNumber(0, 5);
         inventoryItemNames.get(itemNumber).click();
     }
+//
+//    public void itemPreviewPageIsOpened() {
+//        openRandomItemPreview();
+//        assertThat(url()).isNotEqualTo(INVENTORY);
+//    }
 
-    public void itemPreviewPageIsOpened() {
-        openRandomItemPreview();
-        assertThat(url()).isNotEqualTo(INVENTORY);
-
+    public void test(){
+        itemPreview.inventoryPageIsOpened();
     }
 
 }

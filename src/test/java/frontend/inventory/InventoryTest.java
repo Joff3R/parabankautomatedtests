@@ -30,7 +30,7 @@ public class InventoryTest extends StandardBase {
 
         //Given
         inventory.shoppingCartIsEmpty();
-        inventory.itemPreviewPageIsOpened();
+        itemPreview.itemPreviewPageIsOpened();
 
         //When
         itemPreview.clickAddToCartButton();
