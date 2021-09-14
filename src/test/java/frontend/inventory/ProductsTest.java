@@ -19,5 +19,7 @@ public class ProductsTest extends StandardBase {
 
         //Then
         products.allAddButtonsShouldNotBeVisible();
+        products.allRemoveButtonsShouldBeVisible();
+        products.shoppingCartBadgeShouldDisplayNumberOfAddedProducts(6);
     }
 }
