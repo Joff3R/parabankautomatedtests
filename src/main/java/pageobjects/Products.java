@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Products {
 
@@ -73,7 +74,7 @@ public class Products {
     }
 
     public void shoppingCartBadgeDoesNotDisplayNumber(){
-//        assertThat(SHOPPING_CART_BADGE).isNot;
+        assertThat(SHOPPING_CART_BADGE).toString().isEmpty();
     }
 
 
