@@ -82,22 +82,38 @@ public class Products {
                 .forEach(SelenideElement::click);
     }
 
-    public List<String> getInnerTextsFromItemNameButtons() {
-        return inventoryItemName
+    public List<String> getInnerTextsFromLocators(List<SelenideElement> locatorList) {
+        return locatorList
                 .stream()
                 .map(SelenideElement::innerText)
                 .collect(Collectors.toList());
     }
 
+    public void clickSortByNameAscButton() {
+        sortingByNameAsc.click();
+    }
+
+    public void clickSortByNameDescButton() {
+        sortingByNameDesc.click();
+    }
+
+    public void clickSortByPriceAscButton() {
+        sortingByPriceAsc.click();
+    }
+
+    public void clickSortByPriceDescButton() {
+        sortingByPriceDesc.click();
+    }
+
     public void itemsShouldBeSortedByNameAsc() {
         AssertionsForInterfaceTypes
-                .assertThat(getInnerTextsFromItemNameButtons())
+                .assertThat(getInnerTextsFromLocators(inventoryItemList))
                 .isSorted();
     }
 
     public void itemsShouldBeSortedByNameDesc() {
         AssertionsForInterfaceTypes
-                .assertThat(getInnerTextsFromItemNameButtons())
+                .assertThat(getInnerTextsFromLocators(inventoryItemList))
                 .isSortedAccordingTo(Comparator.reverseOrder());
     }
 
