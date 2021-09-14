@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static java.lang.System.out;
+import static helper.UrlHelper.INVENTORY;
 import static java.util.Comparator.reverseOrder;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static util.FormatUtil.extractProductAmount;
@@ -23,9 +24,10 @@ public class Inventory {
     private static final String ADD_TO_CART = "#add-to-cart-";
     private static final String REMOVE = "#remove-";
     private static final String SAUCE_LABS = "sauce-labs-";
-
     private final List<SelenideElement> inventoryItemNames = $$(".inventory_item_name");
     private final List<SelenideElement> inventoryItemPrices = $$(".inventory_item_price");
+
+    private final SelenideElement backpackItemName = $(byText("Sauce Labs Backpack"));
 
     private final SelenideElement sortingByNameAsc = $("option[value=az]");
     private final SelenideElement sortingByNameDesc = $("option[value=za]");
@@ -62,6 +64,10 @@ public class Inventory {
 
     private final SelenideElement shoppingCartBadge = $(".shopping_cart_badge");
 
+    public void clickBackpackAddButton() {
+        backpackAddButton.click();
+    }
+
     public void clickSortByNameAscButton() {
         sortingByNameAsc.click();
     }
@@ -76,6 +82,14 @@ public class Inventory {
 
     public void clickSortByPriceDescButton() {
         sortingByPriceDesc.click();
+    }
+
+    public void clickBackpackItemName() {
+        backpackItemName.click();
+    }
+
+    public void backpackAddButtonShouldNotBeVisible() {
+        backpackAddButton.shouldNotBe(visible);
     }
 
     public void addAllProductsToCart() {
@@ -134,9 +148,14 @@ public class Inventory {
     }
 
     public void openRandomItemPreview() {
-        int itemNumber = generateRandomNumber(1, 6);
+        int itemNumber = generateRandomNumber(0, 5);
         inventoryItemNames.get(itemNumber).click();
-        out.println(url());
+    }
+
+    public void itemPreviewPageIsOpened() {
+        openRandomItemPreview();
+        assertThat(url()).isNotEqualTo(INVENTORY);
+
     }
 
 }

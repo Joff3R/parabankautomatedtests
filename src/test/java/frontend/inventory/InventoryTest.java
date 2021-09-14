@@ -1,12 +1,12 @@
 package frontend.inventory;
 
-import base.CleanBase;
+import base.StandardBase;
 import org.testng.annotations.Test;
 import pageobjects.Inventory;
 import pageobjects.ItemPreview;
 
 @Test
-public class InventoryTest extends CleanBase {
+public class InventoryTest extends StandardBase {
 
     private final Inventory inventory = new Inventory();
     private final ItemPreview itemPreview = new ItemPreview();
@@ -30,14 +30,13 @@ public class InventoryTest extends CleanBase {
 
         //Given
         inventory.shoppingCartIsEmpty();
-        itemPreview.itemPreviewPageIsOpened();
+        inventory.itemPreviewPageIsOpened();
 
         //When
         itemPreview.clickAddToCartButton();
 
         //Then
-        itemPreview.addToCartButtonShouldNotBeVisibleInPreview();
+        itemPreview.addToCartButtonShouldNotBeVisible();
         inventory.shoppingCartBadgeShouldDisplayNumberOfAddedProducts(1);
-
     }
 }

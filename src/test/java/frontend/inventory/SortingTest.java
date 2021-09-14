@@ -1,11 +1,11 @@
 package frontend.inventory;
 
-import base.CleanBase;
+import base.StandardBase;
 import org.testng.annotations.Test;
 import pageobjects.Inventory;
 
 @Test
-public class SortingTest extends CleanBase {
+public class SortingTest extends StandardBase {
 
     private final Inventory inventory = new Inventory();
 
