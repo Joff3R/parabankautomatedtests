@@ -4,7 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import org.assertj.core.api.AssertionsForInterfaceTypes;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,16 +11,21 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.WebDriverRunner.url;
+import static java.lang.System.out;
+import static java.util.Comparator.reverseOrder;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static util.FormatUtil.extractProductAmount;
+import static util.RandomUtil.generateRandomNumber;
 
-public class Products {
+public class Inventory {
 
     private static final String ADD_TO_CART = "#add-to-cart-";
     private static final String REMOVE = "#remove-";
     private static final String SAUCE_LABS = "sauce-labs-";
 
-    private final List<SelenideElement> inventoryItemList = $$(".inventory_item");
-    private final List<SelenideElement> inventoryItemName = $$(".inventory_item_name");
+    private final List<SelenideElement> inventoryItemNames = $$(".inventory_item_name");
+    private final List<SelenideElement> inventoryItemPrices = $$(".inventory_item_price");
 
     private final SelenideElement sortingByNameAsc = $("option[value=az]");
     private final SelenideElement sortingByNameDesc = $("option[value=za]");
@@ -58,6 +62,22 @@ public class Products {
 
     private final SelenideElement shoppingCartBadge = $(".shopping_cart_badge");
 
+    public void clickSortByNameAscButton() {
+        sortingByNameAsc.click();
+    }
+
+    public void clickSortByNameDescButton() {
+        sortingByNameDesc.click();
+    }
+
+    public void clickSortByPriceAscButton() {
+        sortingByPriceAsc.click();
+    }
+
+    public void clickSortByPriceDescButton() {
+        sortingByPriceDesc.click();
+    }
+
     public void addAllProductsToCart() {
         addButtonList.forEach(SelenideElement::click);
     }
@@ -89,33 +109,34 @@ public class Products {
                 .collect(Collectors.toList());
     }
 
-    public void clickSortByNameAscButton() {
-        sortingByNameAsc.click();
-    }
-
-    public void clickSortByNameDescButton() {
-        sortingByNameDesc.click();
-    }
-
-    public void clickSortByPriceAscButton() {
-        sortingByPriceAsc.click();
-    }
-
-    public void clickSortByPriceDescButton() {
-        sortingByPriceDesc.click();
-    }
-
     public void itemsShouldBeSortedByNameAsc() {
         AssertionsForInterfaceTypes
-                .assertThat(getInnerTextsFromLocators(inventoryItemList))
+                .assertThat(getInnerTextsFromLocators(inventoryItemNames))
                 .isSorted();
     }
 
     public void itemsShouldBeSortedByNameDesc() {
         AssertionsForInterfaceTypes
-                .assertThat(getInnerTextsFromLocators(inventoryItemList))
-                .isSortedAccordingTo(Comparator.reverseOrder());
+                .assertThat(getInnerTextsFromLocators(inventoryItemNames))
+                .isSortedAccordingTo(reverseOrder());
     }
 
+    public void itemsShouldBeSortedByPriceAsc() {
+        AssertionsForInterfaceTypes
+                .assertThat(extractProductAmount(getInnerTextsFromLocators(inventoryItemPrices)))
+                .isSorted();
+    }
+
+    public void itemsShouldBeSortedByPriceDesc() {
+        AssertionsForInterfaceTypes
+                .assertThat(extractProductAmount(getInnerTextsFromLocators(inventoryItemPrices)))
+                .isSortedAccordingTo(reverseOrder());
+    }
+
+    public void openRandomItemPreview() {
+        int itemNumber = generateRandomNumber(1, 6);
+        inventoryItemNames.get(itemNumber).click();
+        out.println(url());
+    }
 
 }

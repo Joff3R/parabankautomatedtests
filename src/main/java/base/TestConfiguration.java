@@ -1,15 +1,16 @@
 package base;
 
-import com.codeborne.selenide.Configuration;
 import lombok.NoArgsConstructor;
 
+import static com.codeborne.selenide.Configuration.headless;
+import static com.codeborne.selenide.Configuration.timeout;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
 public class TestConfiguration {
 
     public static void setBrowserConfiguration() {
-        Configuration.startMaximized = true;
-        Configuration.timeout = 10_000;
+        headless = true;
+        timeout = 10_000;
     }
 }

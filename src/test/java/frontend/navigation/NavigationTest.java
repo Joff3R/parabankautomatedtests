@@ -1,13 +1,13 @@
 package frontend.navigation;
 
-import base.StandardBase;
+import base.CleanBase;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.title;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class NavigationTest extends StandardBase {
+public class NavigationTest extends CleanBase {
 
     public void webpageTitleShouldMatch() {
 

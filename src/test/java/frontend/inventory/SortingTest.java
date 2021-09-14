@@ -1,47 +1,49 @@
 package frontend.inventory;
 
-import base.StandardBase;
+import base.CleanBase;
 import org.testng.annotations.Test;
-import pageobjects.Products;
+import pageobjects.Inventory;
 
 @Test
-public class SortingTest extends StandardBase {
+public class SortingTest extends CleanBase {
 
-    private final Products products = new Products();
+    private final Inventory inventory = new Inventory();
 
-    public void productsShouldBeSortedByNameAscWhenClicked() {
-
-        //When
-        products.clickSortByNameAscButton();
-
-        //Then
-        products.itemsShouldBeSortedByNameAsc();
-    }
 
     public void productsShouldBeSortedByNameDescWhenClicked() {
 
         //When
-        products.clickSortByNameDescButton();
+        inventory.clickSortByNameDescButton();
 
         //Then
-        products.itemsShouldBeSortedByNameDesc();
+        inventory.itemsShouldBeSortedByNameDesc();
+    }
+
+    public void productsShouldBeSortedByNameAscWhenClicked() {
+
+        //When
+        inventory.clickSortByNameAscButton();
+
+        //Then
+        inventory.itemsShouldBeSortedByNameAsc();
     }
 
     public void productsShouldBeSortedByPriceAscWhenClicked() {
 
         //When
-        products.clickSortByNameAscButton();
+        inventory.clickSortByPriceAscButton();
 
         //Then
-        products.itemsShouldBeSortedByNameAsc();
+        inventory.itemsShouldBeSortedByPriceAsc();
     }
 
     public void productsShouldBeSortedByPriceDescWhenClicked() {
 
         //When
-        products.clickSortByNameAscButton();
+        inventory.clickSortByPriceDescButton();
 
         //Then
-        products.itemsShouldBeSortedByNameAsc();
+        inventory.itemsShouldBeSortedByPriceDesc();
+
     }
 }

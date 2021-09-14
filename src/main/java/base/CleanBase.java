@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeMethod;
 
 import static helper.UserHelper.STANDARD_USER;
 
-public class StandardBase extends Base {
+public class CleanBase extends Base {
 
     @Override
     @BeforeMethod

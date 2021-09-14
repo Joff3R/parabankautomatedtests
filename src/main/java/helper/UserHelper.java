@@ -1,7 +1,11 @@
 package helper;
 
 import common.User;
+import lombok.NoArgsConstructor;
 
+import static lombok.AccessLevel.PRIVATE;
+
+@NoArgsConstructor(access = PRIVATE)
 public class UserHelper {
 
     private static final String PASSWORD = "secret_sauce";

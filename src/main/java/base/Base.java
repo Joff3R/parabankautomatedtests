@@ -10,7 +10,7 @@ import pageobjects.LoginPage;
 import static base.TestConfiguration.setBrowserConfiguration;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
-import static helper.UrlHelper.E_COMMERCE_URL;
+import static helper.UrlHelper.BASIC_URL;
 
 @Listeners(TestNGListener.class)
 public abstract class Base {
@@ -26,7 +26,7 @@ public abstract class Base {
 
     @BeforeClass
     public void openApp() {
-        open(E_COMMERCE_URL);
+        open(BASIC_URL);
     }
 
     @BeforeMethod
