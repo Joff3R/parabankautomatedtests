@@ -1,6 +1,6 @@
 # SwagLabs Automated Tests
 ## Introduction
-Aim of the project is to automate tests of SauceLabs website (https://www.saucedemo.com/)
+Aim of the project is to automate tests of SwagLabs website (https://www.saucedemo.com/)
 
 ## Technologies
 Project is written using Java JDK 11
@@ -10,6 +10,11 @@ Project is managed with Maven
 Tests are run with TestNG (https://testng.org/doc/index.html)
 
 Front-end functionalities tests are automated with Selenide framework (https://selenide.org/) (powered by Selenium WebDriver)
+
+## Patterns
+Project code is based on following patterns:
+- Page Object Model
+- Builder Pattern
 
 ## Sources
 Main repository of the project could be found at (https://github.com/Joff3R/parabankautomatedtests)
