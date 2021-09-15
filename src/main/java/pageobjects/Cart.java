@@ -1,15 +1,15 @@
 package pageobjects;
 
 import com.codeborne.selenide.SelenideElement;
-import lombok.extern.java.Log;
 
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.WebDriverRunner.url;
+import static helper.UrlHelper.CART;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Log
 public class Cart {
 
     private final SelenideElement checkout = $("#checkout");
@@ -19,6 +19,11 @@ public class Cart {
 
     public void clickCheckoutButton() {
         checkout.click();
+    }
+
+    public void checkOutPageIsOpened(){
+        clickCheckoutButton();
+        assertThat(url()).isEqualTo(CART);
     }
 
     public void removeAllProductsFromCart() {

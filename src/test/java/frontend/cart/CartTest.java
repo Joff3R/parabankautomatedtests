@@ -1,4 +1,4 @@
-package frontend.checkout;
+package frontend.cart;
 
 import base.StandardBase;
 import org.testng.annotations.Test;
