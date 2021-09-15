@@ -23,7 +23,7 @@ public class InventoryTest extends StandardBase {
         //Then
         inventory.allAddButtonsShouldNotBeVisible();
         inventory.allRemoveButtonsShouldBeVisible();
-        inventory.shoppingCartBadgeShouldDisplayNumberOfAddedProducts(6);
+        inventory.shoppingCartIconWithItemNumberShouldDisplayNumberOfAddedProducts(6);
     }
 
     public void itShouldBePossibleToAddProductFromPreview() {
@@ -37,6 +37,6 @@ public class InventoryTest extends StandardBase {
 
         //Then
         itemPreview.addToCartButtonShouldNotBeVisible();
-        inventory.shoppingCartBadgeShouldDisplayNumberOfAddedProducts(1);
+        inventory.shoppingCartIconWithItemNumberShouldDisplayNumberOfAddedProducts(1);
     }
 }

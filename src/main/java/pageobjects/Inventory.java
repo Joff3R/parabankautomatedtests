@@ -63,7 +63,8 @@ public class Inventory {
             onesieRemoveButton,
             testTshirtRemoveButton);
 
-    private final SelenideElement shoppingCartBadge = $(".shopping_cart_badge");
+    private final SelenideElement shoppingCartIconWithItemNumber = $(".shopping_cart_badge");
+    private final SelenideElement shoppingCartIcon = $(".shopping_cart_link");
 
     public void clickBackpackAddButton() {
         backpackAddButton.click();
@@ -105,9 +106,9 @@ public class Inventory {
         removeButtonList.forEach(e -> e.shouldBe(visible));
     }
 
-    public void shoppingCartBadgeShouldDisplayNumberOfAddedProducts(int products) {
+    public void shoppingCartIconWithItemNumberShouldDisplayNumberOfAddedProducts(int products) {
         String productsNumber = String.valueOf(products);
-        String shoppingCartBadgeNumber = shoppingCartBadge.innerText();
+        String shoppingCartBadgeNumber = shoppingCartIconWithItemNumber.innerText();
         assertThat(shoppingCartBadgeNumber).isEqualTo(productsNumber);
     }
 
@@ -159,7 +160,7 @@ public class Inventory {
     }
 
     public void openCartPage() {
-        shoppingCartBadge.click();
+        shoppingCartIcon.click();
     }
 
     public void cartPageIsOpened() {

@@ -3,6 +3,8 @@ package pageobjects;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.url;
+import static helper.UrlHelper.CHECKOUT_STEP_TWO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Checkout {
@@ -13,6 +15,8 @@ public class Checkout {
     private final SelenideElement continueButton = $("#continue");
     private final SelenideElement errorButton = $(".error-button");
     private final SelenideElement errorMessage = $("h3[data-test=error]");
+
+
 
     public void clickContinueButton(){
         continueButton.click();
@@ -40,7 +44,12 @@ public class Checkout {
         fillInPostalCode();
     }
 
-    public void errorShouldAppear(String message){
+    public void errorMessageShouldAppear(String message){
         assertThat(errorMessage.innerText()).isEqualTo(message);
+    }
+
+    public void checkoutStepTwoPageIsOpened(){
+        clickContinueButton();
+        assertThat(url()).isEqualTo(CHECKOUT_STEP_TWO);
     }
 }

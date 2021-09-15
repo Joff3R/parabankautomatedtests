@@ -7,7 +7,7 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static helper.UrlHelper.CART;
+import static helper.UrlHelper.CHECKOUT_STEP_ONE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Cart {
@@ -21,9 +21,9 @@ public class Cart {
         checkout.click();
     }
 
-    public void checkOutPageIsOpened(){
+    public void checkoutStepOnePageIsOpened(){
         clickCheckoutButton();
-        assertThat(url()).isEqualTo(CART);
+        assertThat(url()).isEqualTo(CHECKOUT_STEP_ONE);
     }
 
     public void removeAllProductsFromCart() {
