@@ -17,13 +17,13 @@ Project code uses following patterns:
 - Builder Pattern
 
 ## Sources
-Main repository of the project could be found at (https://github.com/Joff3R/parabankautomatedtests)
+Main repository of the project can be found at (https://github.com/Joff3R/parabankautomatedtests)
 
 ## Launch
 
 - clone the repository 
 ```
-$ git clone https://bitbucket.pansa.pl/scm/tests/webrqaautomatedtests.git
+$ git clone https://github.com/Joff3R/swaglabsautomatedtests
 ```
 - set the compiler as Java 11
 - download all Maven dependencies and reload the project
