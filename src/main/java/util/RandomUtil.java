@@ -11,5 +11,6 @@ public class RandomUtil {
 
     public static int generateRandomNumber(int origin, int bound){
         return ThreadLocalRandom.current().nextInt(origin, bound + 1);
+        //
     }
 }
