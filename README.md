@@ -1,4 +1,4 @@
-# SauceLabs Automated Tests
+# SwagLabs Automated Tests
 ## Introduction
 Aim of the project is to automate tests of SauceLabs website (https://www.saucedemo.com/)
 
