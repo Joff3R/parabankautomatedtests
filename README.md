@@ -12,7 +12,7 @@ Tests are run with TestNG (https://testng.org/doc/index.html)
 Front-end functionalities tests are automated with Selenide framework (https://selenide.org/) (powered by Selenium WebDriver)
 
 ## Patterns
-Project code is based on following patterns:
+Project code uses following patterns:
 - Page Object Model
 - Builder Pattern
 
