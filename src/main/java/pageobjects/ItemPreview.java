@@ -8,6 +8,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 import static helper.UrlHelper.INVENTORY;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@SuppressWarnings("PMD.GodClass")
 public class ItemPreview {
 
     private final Inventory inventory = new Inventory();

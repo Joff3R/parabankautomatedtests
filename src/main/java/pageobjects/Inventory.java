@@ -17,13 +17,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static util.FormatUtil.extractProductAmount;
 import static util.RandomUtil.generateRandomNumber;
 
+@SuppressWarnings("PMD.GodClass")
 public class Inventory {
-
-    private final ItemPreview itemPreview = new ItemPreview();
 
     private static final String ADD_TO_CART = "#add-to-cart-";
     private static final String REMOVE = "#remove-";
     private static final String SAUCE_LABS = "sauce-labs-";
+    private final ItemPreview itemPreview = new ItemPreview();
     private final List<SelenideElement> inventoryItemNames = $$(".inventory_item_name");
     private final List<SelenideElement> inventoryItemPrices = $$(".inventory_item_price");
 
@@ -157,7 +157,7 @@ public class Inventory {
 //        assertThat(url()).isNotEqualTo(INVENTORY);
 //    }
 
-    public void test(){
+    public void test() {
         itemPreview.inventoryPageIsOpened();
     }
 
