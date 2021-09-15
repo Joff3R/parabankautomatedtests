@@ -9,4 +9,5 @@ public class UrlHelper {
 
     public static final String BASE_URL = "https://www.saucedemo.com/";
     public static final String INVENTORY = BASE_URL + "inventory.html";
+    public static final String CART = BASE_URL + "cart.html";
 }

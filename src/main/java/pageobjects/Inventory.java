@@ -13,6 +13,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static helper.UrlHelper.CART;
 import static helper.UrlHelper.INVENTORY;
 import static java.util.Comparator.reverseOrder;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -155,7 +156,15 @@ public class Inventory {
     public void itemPreviewPageIsOpened() {
         openRandomItemPreview();
         assertThat(url()).isNotEqualTo(INVENTORY);
+    }
 
+    public void openCartPage() {
+        shoppingCartBadge.click();
+    }
+
+    public void cartPageIsOpened() {
+        openCartPage();
+        assertThat(url()).isEqualTo(CART);
     }
 
 }
