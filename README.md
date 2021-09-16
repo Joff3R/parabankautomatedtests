@@ -12,18 +12,18 @@ Tests are run with TestNG (https://testng.org/doc/index.html)
 Front-end functionalities tests are automated with Selenide framework (https://selenide.org/) (powered by Selenium WebDriver)
 
 ## Patterns
-Project code is based on following patterns:
+Project code uses following patterns:
 - Page Object Model
 - Builder Pattern
 
 ## Sources
-Main repository of the project could be found at (https://github.com/Joff3R/parabankautomatedtests)
+Main repository of the project can be found at (https://github.com/Joff3R/parabankautomatedtests)
 
 ## Launch
 
 - clone the repository 
 ```
-$ git clone https://bitbucket.pansa.pl/scm/tests/webrqaautomatedtests.git
+$ git clone https://github.com/Joff3R/swaglabsautomatedtests
 ```
 - set the compiler as Java 11
 - download all Maven dependencies and reload the project
