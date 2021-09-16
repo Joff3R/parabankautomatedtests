@@ -15,6 +15,7 @@ Front-end functionalities tests are automated with Selenide framework (https://s
 Project code uses following patterns:
 - Page Object Model
 - Builder Pattern
+- Singleton Pattern 
 
 ## Sources
 Main repository of the project can be found at (https://github.com/Joff3R/parabankautomatedtests)
