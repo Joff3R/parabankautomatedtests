@@ -5,7 +5,6 @@ import org.assertj.core.api.AssertionsForInterfaceTypes;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -18,6 +17,7 @@ import static helper.UrlHelper.INVENTORY;
 import static java.util.Comparator.reverseOrder;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static util.FormatUtil.extractProductAmount;
+import static util.FormatUtil.getInnerTextsFromLocatorList;
 import static util.RandomUtil.generateRandomNumber;
 
 public class Inventory {
@@ -126,13 +126,6 @@ public class Inventory {
                 .forEach(SelenideElement::click);
     }
 
-    public List<String> getInnerTextsFromLocatorList(List<SelenideElement> locatorList) {
-        return locatorList
-                .stream()
-                .map(SelenideElement::innerText)
-                .collect(Collectors.toList());
-    }
-
     public void itemsShouldBeSortedByNameAsc() {
         AssertionsForInterfaceTypes
                 .assertThat(getInnerTextsFromLocatorList(inventoryItemNames))
@@ -176,7 +169,7 @@ public class Inventory {
         assertThat(url()).isEqualTo(CART);
     }
 
-    public float addInventoryPrices(){
+    public float sumInventoryPrices(){
         return extractProductAmount(getInnerTextsFromLocatorList(inventoryItemPrices))
                 .stream()
                 .reduce(0.0f, Float::sum);

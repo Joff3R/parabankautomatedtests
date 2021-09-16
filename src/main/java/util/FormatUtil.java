@@ -1,5 +1,6 @@
 package util;
 
+import com.codeborne.selenide.SelenideElement;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -26,6 +27,13 @@ public class FormatUtil {
                 .stream()
                 .map(e -> extractRegexMatch(e, PRICE_FORMAT))
                 .map(Float::valueOf)
+                .collect(Collectors.toList());
+    }
+
+    public static List<String> getInnerTextsFromLocatorList(List<SelenideElement> locatorList) {
+        return locatorList
+                .stream()
+                .map(SelenideElement::innerText)
                 .collect(Collectors.toList());
     }
 }

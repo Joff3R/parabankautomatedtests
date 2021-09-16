@@ -18,6 +18,7 @@ public class CheckoutTest extends StandardBase {
     public void itShouldBePossibleToContinueWithCheckoutHavingAllFieldsFilledIn() {
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();
 
@@ -31,6 +32,7 @@ public class CheckoutTest extends StandardBase {
     public void itemsShouldRemainInCartWhenCancelButtonIsClicked() {
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.addAllProductsToCart();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();
@@ -46,8 +48,9 @@ public class CheckoutTest extends StandardBase {
     public void totalProductPriceShouldBeEqualToItemTotalLabel() {
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.addAllProductsToCart();
-        float totalPrice = inventory.addInventoryPrices();
+        float totalPrice = inventory.sumInventoryPrices();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();
         checkout.fillInCheckoutData();
@@ -56,13 +59,13 @@ public class CheckoutTest extends StandardBase {
         checkout.checkoutStepTwoPageIsOpened();
 
         //Then
-
-
+        checkout.summedItemPriceIsEqualToItemLabel(totalPrice);
     }
 
     public void itShouldBePossibleToPlaceValidOrder() {
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.addAllProductsToCart();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();

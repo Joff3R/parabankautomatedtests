@@ -14,9 +14,11 @@ public class CartTest extends StandardBase {
     public void itemsQuantityInCartShouldBeEqualToOne() {
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.addAllProductsToCart();
 
         //When
+        inventory.shoppingCartIsEmpty();
         inventory.cartPageIsOpened();
 
         //Then
@@ -26,6 +28,7 @@ public class CartTest extends StandardBase {
     public void itShouldBePossibleToRemoveProductsFromCart() {
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.addAllProductsToCart();
         inventory.cartPageIsOpened();
 
@@ -39,6 +42,7 @@ public class CartTest extends StandardBase {
     public void itemsShouldRemainInCartWhenContinueShoppingButtonIsClicked(){
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.addAllProductsToCart();
         inventory.cartPageIsOpened();
 

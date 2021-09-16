@@ -5,7 +5,10 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static helper.UrlHelper.*;
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static util.FormatUtil.extractProductAmount;
+import static util.FormatUtil.getInnerTextsFromLocatorList;
 import static util.MessageUtil.correctMessageShouldAppear;
 
 public class Checkout {
@@ -66,7 +69,7 @@ public class Checkout {
         correctMessageShouldAppear(errorMessage, message);
     }
 
-    public void confirmationMessageShouldAppear(String message){
+    public void confirmationMessageShouldAppear(String message) {
         correctMessageShouldAppear(completeHeader, message);
     }
 
@@ -90,5 +93,12 @@ public class Checkout {
         assertThat(url()).isEqualTo(INVENTORY);
     }
 
-//    public void
+    public void summedItemPriceIsEqualToItemLabel(float summedItemPrice){
+
+        var itemTotalSingleton = singletonList(itemTotal);
+        var itemTotalPriceText = getInnerTextsFromLocatorList(itemTotalSingleton);
+        var itemTotalExtractedAmount = extractProductAmount(itemTotalPriceText);
+        var finalValue = itemTotalExtractedAmount.get(0);
+        assertThat(summedItemPrice).isEqualTo(finalValue);
+    }
 }

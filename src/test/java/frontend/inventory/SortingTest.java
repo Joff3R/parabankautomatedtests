@@ -13,6 +13,7 @@ public class SortingTest extends StandardBase {
     public void productsShouldBeSortedByNameDescWhenClicked() {
 
         //When
+        inventory.shoppingCartIsEmpty();
         inventory.clickSortByNameDescButton();
 
         //Then
@@ -22,6 +23,7 @@ public class SortingTest extends StandardBase {
     public void productsShouldBeSortedByNameAscWhenClicked() {
 
         //When
+        inventory.shoppingCartIsEmpty();
         inventory.clickSortByNameAscButton();
 
         //Then
@@ -31,6 +33,7 @@ public class SortingTest extends StandardBase {
     public void productsShouldBeSortedByPriceAscWhenClicked() {
 
         //When
+        inventory.shoppingCartIsEmpty();
         inventory.clickSortByPriceAscButton();
 
         //Then
@@ -40,6 +43,7 @@ public class SortingTest extends StandardBase {
     public void productsShouldBeSortedByPriceDescWhenClicked() {
 
         //When
+        inventory.shoppingCartIsEmpty();
         inventory.clickSortByPriceDescButton();
 
         //Then

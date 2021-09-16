@@ -20,6 +20,7 @@ public class CheckoutNegativeTest extends StandardBase {
     public void itShouldNotBePossibleToContinueWithCheckoutHavingFirstNameFieldLeftBlank(){
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();
 
@@ -35,6 +36,7 @@ public class CheckoutNegativeTest extends StandardBase {
     public void itShouldNotBePossibleToContinueWithCheckoutHavingLastNameFieldLeftBlank(){
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();
 
@@ -50,6 +52,7 @@ public class CheckoutNegativeTest extends StandardBase {
     public void itShouldNotBePossibleToContinueWithCheckoutHavingPostalCodeFieldLeftBlank(){
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();
 
@@ -65,6 +68,7 @@ public class CheckoutNegativeTest extends StandardBase {
     public void itShouldNotBePossibleToContinueWithCheckoutHavingAllFieldsLeftBlank(){
 
         //Given
+        inventory.shoppingCartIsEmpty();
         inventory.cartPageIsOpened();
         cart.checkoutStepOnePageIsOpened();
 
