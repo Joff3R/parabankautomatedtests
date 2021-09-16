@@ -26,7 +26,7 @@ public class Inventory {
     private static final String REMOVE = "#remove-";
     private static final String SAUCE_LABS = "sauce-labs-";
     private final List<SelenideElement> inventoryItemNames = $$(".inventory_item_name");
-    private final List<SelenideElement> inventoryItemPrices = $$(".inventory_item_price");
+    public final List<SelenideElement> inventoryItemPrices = $$(".inventory_item_price");
 
     private final SelenideElement backpackItemName = $(byText("Sauce Labs Backpack"));
 
@@ -118,7 +118,7 @@ public class Inventory {
                 .forEach(SelenideElement::click);
     }
 
-    public List<String> getInnerTextsFromLocators(List<SelenideElement> locatorList) {
+    public List<String> getInnerTextsFromLocatorList(List<SelenideElement> locatorList) {
         return locatorList
                 .stream()
                 .map(SelenideElement::innerText)
@@ -127,25 +127,25 @@ public class Inventory {
 
     public void itemsShouldBeSortedByNameAsc() {
         AssertionsForInterfaceTypes
-                .assertThat(getInnerTextsFromLocators(inventoryItemNames))
+                .assertThat(getInnerTextsFromLocatorList(inventoryItemNames))
                 .isSorted();
     }
 
     public void itemsShouldBeSortedByNameDesc() {
         AssertionsForInterfaceTypes
-                .assertThat(getInnerTextsFromLocators(inventoryItemNames))
+                .assertThat(getInnerTextsFromLocatorList(inventoryItemNames))
                 .isSortedAccordingTo(reverseOrder());
     }
 
     public void itemsShouldBeSortedByPriceAsc() {
         AssertionsForInterfaceTypes
-                .assertThat(extractProductAmount(getInnerTextsFromLocators(inventoryItemPrices)))
+                .assertThat(extractProductAmount(getInnerTextsFromLocatorList(inventoryItemPrices)))
                 .isSorted();
     }
 
     public void itemsShouldBeSortedByPriceDesc() {
         AssertionsForInterfaceTypes
-                .assertThat(extractProductAmount(getInnerTextsFromLocators(inventoryItemPrices)))
+                .assertThat(extractProductAmount(getInnerTextsFromLocatorList(inventoryItemPrices)))
                 .isSortedAccordingTo(reverseOrder());
     }
 
@@ -168,4 +168,9 @@ public class Inventory {
         assertThat(url()).isEqualTo(CART);
     }
 
+    public float addInventoryPrices(){
+        return extractProductAmount(getInnerTextsFromLocatorList(inventoryItemPrices))
+                .stream()
+                .reduce(0.0f, Float::sum);
+    }
 }

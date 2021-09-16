@@ -9,14 +9,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Checkout {
 
+    private final Inventory inventory = new Inventory();
+
     private final SelenideElement firstName = $("#first-name");
     private final SelenideElement lastName = $("#last-name");
     private final SelenideElement postalCode = $("#postal-code");
     private final SelenideElement continueButton = $("#continue");
     private final SelenideElement errorButton = $(".error-button");
     private final SelenideElement errorMessage = $("h3[data-test=error]");
-
-
 
     public void clickContinueButton(){
         continueButton.click();
@@ -52,4 +52,5 @@ public class Checkout {
         clickContinueButton();
         assertThat(url()).isEqualTo(CHECKOUT_STEP_TWO);
     }
+
 }

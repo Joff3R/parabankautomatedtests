@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import pageobjects.Inventory;
 import pageobjects.ItemPreview;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Test
 public class InventoryTest extends StandardBase {
 
@@ -38,5 +40,20 @@ public class InventoryTest extends StandardBase {
         //Then
         itemPreview.addToCartButtonShouldNotBeVisible();
         inventory.shoppingCartIconWithItemNumberShouldDisplayNumberOfAddedProducts(1);
+    }
+
+    public void abc() {
+
+        //Given
+        inventory.shoppingCartIsEmpty();
+
+        //When
+        inventory.addAllProductsToCart();
+
+        //Then
+        var a = inventory.addInventoryPrices();
+        var b = 129.94f;
+
+        assertThat(a).isEqualTo(b);
     }
 }
