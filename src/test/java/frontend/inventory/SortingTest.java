@@ -44,6 +44,5 @@ public class SortingTest extends StandardBase {
 
         //Then
         inventory.itemsShouldBeSortedByPriceDesc();
-
     }
 }

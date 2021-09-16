@@ -94,12 +94,20 @@ public class Inventory {
         backpackAddButton.shouldNotBe(visible);
     }
 
+    public void shoppingCartIconWithItemNumberShouldNotBeVisible() {
+        shoppingCartIconWithItemNumber.shouldNotBe(visible);
+    }
+
     public void addAllProductsToCart() {
         addButtonList.forEach(SelenideElement::click);
     }
 
     public void allAddButtonsShouldNotBeVisible() {
         addButtonList.forEach(e -> e.shouldNotBe(visible));
+    }
+
+    public void allAddButtonsShouldBeVisible() {
+        addButtonList.forEach(e -> e.shouldBe(visible));
     }
 
     public void allRemoveButtonsShouldBeVisible() {

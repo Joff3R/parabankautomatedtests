@@ -20,7 +20,7 @@ public class CartTest extends StandardBase {
         inventory.cartPageIsOpened();
 
         //Then
-        cart.productQuantityForAllProductsInTheCartIsOne();
+        cart.itemQuantityForAllProductsInTheCartIsOne();
     }
 
     public void itShouldBePossibleToRemoveProductsFromCart() {
@@ -34,7 +34,19 @@ public class CartTest extends StandardBase {
 
         //Then
         cart.numberOfItemsInCartShouldBeEqualTo(0);
+    }
 
+    public void itemsShouldRemainInCartWhenContinueShoppingButtonIsClicked(){
+
+        //Given
+        inventory.addAllProductsToCart();
+        inventory.cartPageIsOpened();
+
+        //When
+        cart.inventoryPageIsOpened();
+
+        //Then
+        inventory.shoppingCartIconWithItemNumberShouldDisplayNumberOfAddedProducts(6);
     }
 
 

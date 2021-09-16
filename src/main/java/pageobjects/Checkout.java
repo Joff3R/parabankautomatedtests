@@ -4,8 +4,9 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static helper.UrlHelper.CHECKOUT_STEP_TWO;
+import static helper.UrlHelper.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static util.MessageUtil.correctMessageShouldAppear;
 
 public class Checkout {
 
@@ -17,13 +18,29 @@ public class Checkout {
     private final SelenideElement continueButton = $("#continue");
     private final SelenideElement errorButton = $(".error-button");
     private final SelenideElement errorMessage = $("h3[data-test=error]");
+    private final SelenideElement cancel = $("#cancel");
+    private final SelenideElement finish = $("#finish");
+    private final SelenideElement backHome = $("#back-to-products");
+    private final SelenideElement completeHeader = $(".complete-header");
 
     public void clickContinueButton(){
         continueButton.click();
     }
 
+    public void clickCancelButton(){
+        cancel.click();
+    }
+
+    public void clickFinishButton(){
+        finish.click();
+    }
+
     public void clickErrorButton(){
         errorButton.click();
+    }
+
+    public void clickBackHomeButton(){
+        backHome.click();
     }
 
     public void fillInFirstName(){
@@ -45,7 +62,11 @@ public class Checkout {
     }
 
     public void errorMessageShouldAppear(String message){
-        assertThat(errorMessage.innerText()).isEqualTo(message);
+        correctMessageShouldAppear(errorMessage, message);
+    }
+
+    public void confirmationMessageShouldAppear(String message){
+        correctMessageShouldAppear(completeHeader, message);
     }
 
     public void checkoutStepTwoPageIsOpened(){
@@ -53,4 +74,18 @@ public class Checkout {
         assertThat(url()).isEqualTo(CHECKOUT_STEP_TWO);
     }
 
+    public void cartPageIsOpened(){
+        clickCancelButton();
+        assertThat(url()).isEqualTo(CART);
+    }
+
+    public void checkoutCompletePageIsOpened(){
+        clickFinishButton();
+        assertThat(url()).isEqualTo(CHECKOUT_COMPLETE);
+    }
+
+    public void inventoryPageIsOpened(){
+        clickBackHomeButton();
+        assertThat(url()).isEqualTo(INVENTORY);
+    }
 }
