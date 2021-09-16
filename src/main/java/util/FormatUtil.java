@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 @NoArgsConstructor(access = PRIVATE)
 public class FormatUtil {
 
-    public static final String PRICE_FORMAT = "\\d{1,4}[.]\\d{2}";
+    private static final String PRICE_FORMAT = "\\d{1,4}[.]\\d{2}";
 
     public static String extractRegexMatch(String text, String regexPattern) {
         var regex = Pattern.compile(regexPattern);

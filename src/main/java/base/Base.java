@@ -1,7 +1,6 @@
 package base;
 
 import common.User;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
@@ -24,7 +23,7 @@ public abstract class Base {
         page(LoginPage.class).userIsLoggedIn(user);
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void openApp() {
         open(BASE_URL);
     }

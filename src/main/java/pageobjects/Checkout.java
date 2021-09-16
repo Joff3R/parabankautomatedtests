@@ -13,13 +13,10 @@ import static util.MessageUtil.correctMessageShouldAppear;
 
 public class Checkout {
 
-    private final Inventory inventory = new Inventory();
-
     private final SelenideElement firstName = $("#first-name");
     private final SelenideElement lastName = $("#last-name");
     private final SelenideElement postalCode = $("#postal-code");
     private final SelenideElement continueButton = $("#continue");
-    private final SelenideElement errorButton = $(".error-button");
     private final SelenideElement errorMessage = $("h3[data-test=error]");
     private final SelenideElement cancel = $("#cancel");
     private final SelenideElement finish = $("#finish");
@@ -27,45 +24,49 @@ public class Checkout {
     private final SelenideElement completeHeader = $(".complete-header");
     private final SelenideElement itemTotal = $(".summary_subtotal_label");
 
-    public void clickContinueButton(){
+    public void cartPageIsOpened() {
+        clickCancelButton();
+        assertThat(url()).isEqualTo(CART);
+    }
+
+    public void checkoutStepTwoPageIsOpened() {
+        clickContinueButton();
+        assertThat(url()).isEqualTo(CHECKOUT_STEP_TWO);
+    }
+
+    public void checkoutCompletePageIsOpened() {
+        clickFinishButton();
+        assertThat(url()).isEqualTo(CHECKOUT_COMPLETE);
+    }
+
+    public void inventoryPageIsOpened() {
+        clickBackHomeButton();
+        assertThat(url()).isEqualTo(INVENTORY);
+    }
+
+    public void clickContinueButton() {
         continueButton.click();
     }
 
-    public void clickCancelButton(){
-        cancel.click();
-    }
-
-    public void clickFinishButton(){
-        finish.click();
-    }
-
-    public void clickErrorButton(){
-        errorButton.click();
-    }
-
-    public void clickBackHomeButton(){
-        backHome.click();
-    }
-
-    public void fillInFirstName(){
+    public void fillInFirstName() {
         firstName.sendKeys("A");
     }
 
-    public void fillInLastName(){
+    public void fillInLastName() {
         lastName.sendKeys("B");
     }
 
-    public void fillInPostalCode(){
+    public void fillInPostalCode() {
         postalCode.sendKeys("000");
     }
 
-    public void fillInCheckoutData(){
+    public void fillInCheckoutData() {
         fillInFirstName();
         fillInLastName();
         fillInPostalCode();
     }
 
-    public void errorMessageShouldAppear(String message){
+    public void errorMessageShouldAppear(String message) {
         correctMessageShouldAppear(errorMessage, message);
     }
 
@@ -73,32 +74,23 @@ public class Checkout {
         correctMessageShouldAppear(completeHeader, message);
     }
 
-    public void checkoutStepTwoPageIsOpened(){
-        clickContinueButton();
-        assertThat(url()).isEqualTo(CHECKOUT_STEP_TWO);
-    }
-
-    public void cartPageIsOpened(){
-        clickCancelButton();
-        assertThat(url()).isEqualTo(CART);
-    }
-
-    public void checkoutCompletePageIsOpened(){
-        clickFinishButton();
-        assertThat(url()).isEqualTo(CHECKOUT_COMPLETE);
-    }
-
-    public void inventoryPageIsOpened(){
-        clickBackHomeButton();
-        assertThat(url()).isEqualTo(INVENTORY);
-    }
-
-    public void summedItemPriceIsEqualToItemLabel(float summedItemPrice){
-
+    public void summedItemPriceIsEqualToItemLabel(float summedItemPrice) {
         var itemTotalSingleton = singletonList(itemTotal);
         var itemTotalPriceText = getInnerTextsFromLocatorList(itemTotalSingleton);
         var itemTotalExtractedAmount = extractProductAmount(itemTotalPriceText);
         var finalValue = itemTotalExtractedAmount.get(0);
         assertThat(summedItemPrice).isEqualTo(finalValue);
+    }
+
+    private void clickCancelButton() {
+        cancel.click();
+    }
+
+    private void clickFinishButton() {
+        finish.click();
+    }
+
+    private void clickBackHomeButton() {
+        backHome.click();
     }
 }

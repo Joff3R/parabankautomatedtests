@@ -17,10 +17,6 @@ public class ItemPreview {
         addToCart.click();
     }
 
-    public void clickBackToProductsButton() {
-        backToProducts.click();
-    }
-
     public void inventoryPageIsOpened() {
         clickBackToProductsButton();
         assertThat(url()).isEqualTo(INVENTORY);
@@ -28,5 +24,9 @@ public class ItemPreview {
 
     public void addToCartButtonShouldNotBeVisible() {
         addToCart.shouldNotBe(visible);
+    }
+
+    private void clickBackToProductsButton() {
+        backToProducts.click();
     }
 }

@@ -10,7 +10,7 @@ import static lombok.AccessLevel.PRIVATE;
 public class TestConfiguration {
 
     public static void setBrowserConfiguration() {
-        headless = true;
+        headless = false;
         timeout = 10_000;
     }
 }

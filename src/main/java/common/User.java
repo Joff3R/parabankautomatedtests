@@ -2,11 +2,9 @@ package common;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.ToString;
 
-@Getter
 @Builder
-@ToString
+@Getter
 public class User {
 
     private final String username;

@@ -3,13 +3,3 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 X
 (build/reports/tests/1631542108725.0.html,5\8\5829b7ba389eb7701c0d459bc16e1414571f4c27
-V
-&src/main/java/base/TestNGListener.java,d\d\dd349e6902f55265866f2b84fdba411e1a3b0131
-Y
-)src/main/java/base/TestConfiguration.java,6\7\6767919bc1d0036615ef264dc9d5eaa6c46e22e2
-T
-$src/main/java/base/StandardBase.java,e\0\e0059c7e54ae5463f27d5c145e7e1b354e9a47ad
-L
-src/main/java/base/Base.java,0\0\0000a62042b89f92c7704b7e00f6235cae22f1fa
-T
-$src/main/java/helper/UserHelper.java,b\d\bd439e43db859cc2fd0303aa103d12831b8e1397

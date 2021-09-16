@@ -25,16 +25,13 @@ public class Inventory {
     private static final String ADD_TO_CART = "#add-to-cart-";
     private static final String REMOVE = "#remove-";
     private static final String SAUCE_LABS = "sauce-labs-";
-    private final List<SelenideElement> inventoryItemNames = $$(".inventory_item_name");
-    public final List<SelenideElement> inventoryItemPrices = $$(".inventory_item_price");
-
     private final SelenideElement backpackItemName = $(byText("Sauce Labs Backpack"));
-
+    private final SelenideElement shoppingCartIconWithItemNumber = $(".shopping_cart_badge");
+    private final SelenideElement shoppingCartIcon = $(".shopping_cart_link");
     private final SelenideElement sortingByNameAsc = $("option[value=az]");
     private final SelenideElement sortingByNameDesc = $("option[value=za]");
     private final SelenideElement sortingByPriceAsc = $("option[value=lohi]");
     private final SelenideElement sortingByPriceDesc = $("option[value=hilo]");
-
     private final SelenideElement backpackAddButton = $(ADD_TO_CART + SAUCE_LABS + "backpack");
     private final SelenideElement bikeLightAddButton = $(ADD_TO_CART + SAUCE_LABS + "bike-light");
     private final SelenideElement boltTshirtAddButton = $(ADD_TO_CART + SAUCE_LABS + "bolt-t-shirt");
@@ -48,7 +45,6 @@ public class Inventory {
             fleeceJacketAddButton,
             onesieAddButton,
             testTshirtAddButton);
-
     private final SelenideElement backpackRemoveButton = $(REMOVE + SAUCE_LABS + "backpack");
     private final SelenideElement bikeLightRemoveButton = $(REMOVE + SAUCE_LABS + "bike-light");
     private final SelenideElement boltTshirtRemoveButton = $(REMOVE + SAUCE_LABS + "bolt-t-shirt");
@@ -62,9 +58,8 @@ public class Inventory {
             fleeceJacketRemoveButton,
             onesieRemoveButton,
             testTshirtRemoveButton);
-
-    private final SelenideElement shoppingCartIconWithItemNumber = $(".shopping_cart_badge");
-    private final SelenideElement shoppingCartIcon = $(".shopping_cart_link");
+    private final List<SelenideElement> inventoryItemNames = $$(".inventory_item_name");
+    private final List<SelenideElement> inventoryItemPrices = $$(".inventory_item_price");
 
     public void clickBackpackAddButton() {
         backpackAddButton.click();
@@ -150,18 +145,9 @@ public class Inventory {
                 .isSortedAccordingTo(reverseOrder());
     }
 
-    public void openRandomItemPreview() {
-        int itemNumber = generateRandomNumber(0, 5);
-        inventoryItemNames.get(itemNumber).click();
-    }
-
     public void itemPreviewPageIsOpened() {
         openRandomItemPreview();
         assertThat(url()).isNotEqualTo(INVENTORY);
-    }
-
-    public void openCartPage() {
-        shoppingCartIcon.click();
     }
 
     public void cartPageIsOpened() {
@@ -169,9 +155,18 @@ public class Inventory {
         assertThat(url()).isEqualTo(CART);
     }
 
-    public float sumInventoryPrices(){
+    public float sumInventoryPrices() {
         return extractProductAmount(getInnerTextsFromLocatorList(inventoryItemPrices))
                 .stream()
                 .reduce(0.0f, Float::sum);
+    }
+
+    private void openCartPage() {
+        shoppingCartIcon.click();
+    }
+
+    private void openRandomItemPreview() {
+        int itemNumber = generateRandomNumber(0, 5);
+        inventoryItemNames.get(itemNumber).click();
     }
 }
