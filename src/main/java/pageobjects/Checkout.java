@@ -22,6 +22,7 @@ public class Checkout {
     private final SelenideElement finish = $("#finish");
     private final SelenideElement backHome = $("#back-to-products");
     private final SelenideElement completeHeader = $(".complete-header");
+    private final SelenideElement itemTotal = $(".summary_subtotal_label");
 
     public void clickContinueButton(){
         continueButton.click();
@@ -88,4 +89,6 @@ public class Checkout {
         clickBackHomeButton();
         assertThat(url()).isEqualTo(INVENTORY);
     }
+
+//    public void
 }

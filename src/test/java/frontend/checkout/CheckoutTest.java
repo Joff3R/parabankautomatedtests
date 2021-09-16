@@ -43,6 +43,23 @@ public class CheckoutTest extends StandardBase {
         inventory.shoppingCartIconWithItemNumberShouldDisplayNumberOfAddedProducts(6);
     }
 
+    public void totalProductPriceShouldBeEqualToItemTotalLabel() {
+
+        //Given
+        inventory.addAllProductsToCart();
+        float totalPrice = inventory.addInventoryPrices();
+        inventory.cartPageIsOpened();
+        cart.checkoutStepOnePageIsOpened();
+        checkout.fillInCheckoutData();
+
+        //When
+        checkout.checkoutStepTwoPageIsOpened();
+
+        //Then
+
+
+    }
+
     public void itShouldBePossibleToPlaceValidOrder() {
 
         //Given

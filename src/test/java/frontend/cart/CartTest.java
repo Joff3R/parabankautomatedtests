@@ -48,6 +48,4 @@ public class CartTest extends StandardBase {
         //Then
         inventory.shoppingCartIconWithItemNumberShouldDisplayNumberOfAddedProducts(6);
     }
-
-
 }
