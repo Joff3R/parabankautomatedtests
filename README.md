@@ -18,7 +18,7 @@ Project code uses following patterns:
 - Singleton Pattern 
 
 ## Sources
-Main repository of the project can be found at (https://github.com/Joff3R/parabankautomatedtests)
+Main repository of the project can be found at (https://github.com/Joff3R/swaglabsautomatedtests)
 
 ## Launch
 
@@ -41,21 +41,3 @@ path: main/java/base/StandardBase
   
 path: main/java/base/TestConfiguration 
 - to configure the browser WebDriver, edit setBrowserConfiguration() method, setting up using Selenide Configuration class (e.g. to run the browser in head mode, set ```headless = false;```)
-
-## Static analysis
-
-### PMD
- - https://pmd.github.io/latest/
- - to execute static analysis by PMD run ```mvn pmd:pmd```
- - you can find report in `target/site/pmd.html`
- - PMD analysis is running during `clean` phase 
- - All PMD analysis results can be seen in logs when running tests with for example `mvn clean test` command 
-### SonarLint
- - https://www.sonarlint.org/
- - install SonarLint plugin in IntelliJ
- - right click on root folder `webrqaautomatedtests` and select `SonarLint -> Analyze with SonarLint`
-
-### Error Prone
- - https://errorprone.info/
- - Error Prone static analysis is executed automatically when compiling project, for example with `mvn clean test` command
- - analysis results are visible in logs
