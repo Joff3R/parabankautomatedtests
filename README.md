@@ -1,6 +1,6 @@
 # SwagLabs Automated Tests
 ## Introduction
-Aim of the project is to automate tests of SwagLabs website (https://www.saucedemo.com/)
+Aim of the project is to automate GUI tests of SwagLabs website (https://www.saucedemo.com/)
 
 ![swaglabstestsGif](https://user-images.githubusercontent.com/30385512/172943983-b8ef3bb6-8c90-4f67-835e-7ff9346dff6a.gif)
 
